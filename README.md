@@ -4,6 +4,9 @@ A react native component that implements OAuth2 for an iOS app and passes a bear
 Upon starting up the application, if the user has not previously authorized the application, they will be redirected to a login and authorization screen in safari. Upon granting authorization they will be redirected back into the application, and all descendent components will have access to the bearer token to fetch information from the API.
 
 --------------
+Warning, danger, experimental and likely to change significantly. Pull requests welcome.
+
+--------------
 
 ## Installation
 OAuth2 requires some configuration work in XCode. First you will need to link the react native Linking Library. You can do so by following the [instructions for manual linking here](https://facebook.github.io/react-native/docs/linking-libraries-ios.html#manual-linking). In practice I believe you only need to do steps 2 and 3 because the RCTLinking.xcodeproject file already existed in my Libraries folder.
