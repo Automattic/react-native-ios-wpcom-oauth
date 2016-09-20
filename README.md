@@ -12,16 +12,12 @@ Then you will need to register a custom URL scheme. This allows the iOS applicat
 
 Now go to https://developer.wordpress.com/apps/new/, and create a new application. For the Redirect URL and Javascript Origins, you will need to enter the custom URL scheme you created previously, and importantly you must include a path (it cannot be the base URL). I suggest something like `myfantasticapplication://callback`. For the "Type" of the application, select "Native".
 
-This component reads the OAuth settings from a config file that must live in the root of the host project. It's important that you add this file to your `.gitignore` file in the host project so you don't accidentally commit and share your application's `client_secret`. The config file should be in the format:
+## Props
+This component requires that OAuth settings be passed in as props. It's recommended that you store these in a config file in the host project and add the file to your `.gitignore` so you don't check your secret key into a public repository.
 
-```js
-{
-	client_id: 1234,
-	client_secret: 'yoursecretappkey',
-	redirect_url: 'myfantasticapplication://callback',
-	namespace: '@myfantasticapplication' // namespace used to store the token
-}
-```
+* `client_id`: String
+* `client_secret`: String
+* `redirect_uri`: String
 
 ## Usage
 This component is written as a higher order component that passes the bearer token to descendent components in context. This is a little kludgy and will probably change in future versions. For example we might want to allow for a callback method to be passed into the component as a prop, so you can then store the token using any little data structure your little heart desires. But for now, this is how ya do it. :-)
@@ -31,10 +27,11 @@ import React from 'react';
 import Main from './app/components/main';
 import OAuthWrapper from 'react-native-ios-wpcom-oauth';
 import { AppRegistry } from 'react-native';
+import OAuthConfig from './config';
 
 function MyFantasticApplication() {
 	return (
-		<OAuthWrapper>
+		<OAuthWrapper {...{ OAuthConfig } }>
 			<Main />
 		</OAuthWrapper >
 	);
