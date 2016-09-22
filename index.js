@@ -1,13 +1,11 @@
 import React, { Component } from 'react';
-import { Linking } from 'react-native';
+import { AsyncStorage, Linking } from 'react-native';
 import { parse, stringify } from 'qs';
-import { AsyncStorage } from 'react-native';
 
 class OAuthWrapper extends Component {
 	state = {
 		accessToken: null,
 	}
-
 	getChildContext() {
 		return {
 			accessToken: this.state ? this.state.accessToken : null,

@@ -34,10 +34,10 @@ import OAuthConfig from './config';
 
 function MyFantasticApplication() {
 	return (
-		<OAuthWrapper {...{ OAuthConfig } }>
+		<OAuthWrapper { ...{ OAuthConfig } }>
 			<Main />
 		</OAuthWrapper >
-	);
+    );
 }
 
 AppRegistry.registerComponent( 'MyFantasticApplication', () => MyFantasticApplication );
@@ -55,10 +55,10 @@ class Main extends Component {
 	}
 
 	render() {
-		// accessToken is available here as this.context.accessToken
+        // accessToken is available here as this.context.accessToken
 		return (
 			<View />
-		);
+        );
 	}
 }
 
